@@ -11,6 +11,14 @@
 		4A57DF4128EE979C0033BD41 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A57DF4028EE979C0033BD41 /* ContentView.swift */; };
 		4A57DF4328EE979D0033BD41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A57DF4228EE979D0033BD41 /* Assets.xcassets */; };
 		4A57DF4628EE979D0033BD41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A57DF4528EE979D0033BD41 /* Preview Assets.xcassets */; };
+		4A57DF5128EF43980033BD41 /* DailyWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A57DF5028EF43980033BD41 /* DailyWorkout.swift */; };
+		4A57DF5928EF4C340033BD41 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A57DF5828EF4C340033BD41 /* HapticManager.swift */; };
+		4A57DF5B28EF4F590033BD41 /* WorkoutListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A57DF5A28EF4F590033BD41 /* WorkoutListScreen.swift */; };
+		4A57DF5D28EF52420033BD41 /* WorkoutDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A57DF5C28EF52420033BD41 /* WorkoutDetailScreen.swift */; };
+		4A57DF5F28EF52950033BD41 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A57DF5E28EF52950033BD41 /* TimerView.swift */; };
+		4A57DF6128EF52AA0033BD41 /* WorkoutEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A57DF6028EF52AA0033BD41 /* WorkoutEditScreen.swift */; };
+		4A57DF6328EF52E90033BD41 /* WorkoutCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A57DF6228EF52E90033BD41 /* WorkoutCellView.swift */; };
+		4A57DF6528F5197E0033BD41 /* AddWorkoutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A57DF6428F5197E0033BD41 /* AddWorkoutScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +27,14 @@
 		4A57DF4028EE979C0033BD41 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4A57DF4228EE979D0033BD41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A57DF4528EE979D0033BD41 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4A57DF5028EF43980033BD41 /* DailyWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWorkout.swift; sourceTree = "<group>"; };
+		4A57DF5828EF4C340033BD41 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		4A57DF5A28EF4F590033BD41 /* WorkoutListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListScreen.swift; sourceTree = "<group>"; };
+		4A57DF5C28EF52420033BD41 /* WorkoutDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailScreen.swift; sourceTree = "<group>"; };
+		4A57DF5E28EF52950033BD41 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		4A57DF6028EF52AA0033BD41 /* WorkoutEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutEditScreen.swift; sourceTree = "<group>"; };
+		4A57DF6228EF52E90033BD41 /* WorkoutCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCellView.swift; sourceTree = "<group>"; };
+		4A57DF6428F5197E0033BD41 /* AddWorkoutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +67,10 @@
 		4A57DF3D28EE979C0033BD41 /* ProtoO2 */ = {
 			isa = PBXGroup;
 			children = (
+				4A57DF4F28EF3C3D0033BD41 /* Managers */,
+				4A57DF4E28EF3C310033BD41 /* Models */,
+				4A57DF4C28EF3C190033BD41 /* Views */,
 				4A57DF3E28EE979C0033BD41 /* ProtoO2App.swift */,
-				4A57DF4028EE979C0033BD41 /* ContentView.swift */,
 				4A57DF4228EE979D0033BD41 /* Assets.xcassets */,
 				4A57DF4428EE979D0033BD41 /* Preview Content */,
 			);
@@ -65,6 +83,44 @@
 				4A57DF4528EE979D0033BD41 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4A57DF4C28EF3C190033BD41 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A57DF6228EF52E90033BD41 /* WorkoutCellView.swift */,
+				4A57DF5E28EF52950033BD41 /* TimerView.swift */,
+				4A57DF4028EE979C0033BD41 /* ContentView.swift */,
+				4A57DF4D28EF3C290033BD41 /* Screens */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4A57DF4D28EF3C290033BD41 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				4A57DF5A28EF4F590033BD41 /* WorkoutListScreen.swift */,
+				4A57DF5C28EF52420033BD41 /* WorkoutDetailScreen.swift */,
+				4A57DF6028EF52AA0033BD41 /* WorkoutEditScreen.swift */,
+				4A57DF6428F5197E0033BD41 /* AddWorkoutScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		4A57DF4E28EF3C310033BD41 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4A57DF5028EF43980033BD41 /* DailyWorkout.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4A57DF4F28EF3C3D0033BD41 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4A57DF5828EF4C340033BD41 /* HapticManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +193,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A57DF5F28EF52950033BD41 /* TimerView.swift in Sources */,
+				4A57DF5D28EF52420033BD41 /* WorkoutDetailScreen.swift in Sources */,
+				4A57DF5B28EF4F590033BD41 /* WorkoutListScreen.swift in Sources */,
 				4A57DF4128EE979C0033BD41 /* ContentView.swift in Sources */,
+				4A57DF5928EF4C340033BD41 /* HapticManager.swift in Sources */,
+				4A57DF6528F5197E0033BD41 /* AddWorkoutScreen.swift in Sources */,
+				4A57DF6328EF52E90033BD41 /* WorkoutCellView.swift in Sources */,
+				4A57DF5128EF43980033BD41 /* DailyWorkout.swift in Sources */,
+				4A57DF6128EF52AA0033BD41 /* WorkoutEditScreen.swift in Sources */,
 				4A57DF3F28EE979C0033BD41 /* ProtoO2App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
