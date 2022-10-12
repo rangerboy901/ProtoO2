@@ -9,13 +9,14 @@ import SwiftUI
 import Foundation
 
 
-struct DailyWorkout: Identifiable {
+struct DailyWorkout: Identifiable, Codable {
     let id: UUID
     var title: String
     var objective: String
     var type = ""
     var exercises: [Exercise]
     var timeGoal: Int
+    var history: [History] = []
     
     ///initializer that assigns a default value to the id property.
     init(id: UUID = UUID(), title: String, objective: String, type: String, exercises: [String], timeGoal: Int) {
@@ -23,7 +24,6 @@ struct DailyWorkout: Identifiable {
         self.title = title
         self.objective = objective
         self.type = type
-       
         self.exercises = exercises.map { Exercise(name: $0)}
         self.timeGoal = timeGoal
         
@@ -31,7 +31,7 @@ struct DailyWorkout: Identifiable {
 }
 extension DailyWorkout {
     
-    struct Exercise: Identifiable {
+    struct Exercise: Identifiable, Codable {
         var id: UUID
         var name: String
         
@@ -53,7 +53,24 @@ extension DailyWorkout {
     var data: Data {
         Data(title: title, objective: objective,type: type, exercises: exercises, timeGoal: Double(timeGoal))
     }
-}
+    mutating func update(from data: Data) {
+           title = data.title
+        objective = data.objective
+        type = data.type
+           exercises = data.exercises
+           timeGoal = Int(data.timeGoal)
+        
+       }
+    init(data: Data) {
+           id = UUID()
+           title = data.title
+        objective = data.objective
+        type = data.type
+           exercises = data.exercises
+           timeGoal = Int(data.timeGoal)
+          
+       }
+   }
 
 extension DailyWorkout {
     static var sampleData: [DailyWorkout] {

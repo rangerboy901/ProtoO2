@@ -13,11 +13,11 @@ struct WorkoutDetailScreen: View {
     @Binding var workout: DailyWorkout
     @State private var isPresentingWorkoutEditScreen = false
     @State private var data = DailyWorkout.Data()
-    @State private var newExercise = ""
+    @State private var newWorkoutData = DailyWorkout.Data()
     
     let types = ["HIIT", "Cardio", "Strength", "Power", "Recover","Stretch"]
     @State private var name: String = ""
-    @State private var priority: String = "Normal"
+    
     
     
     func colorize(type: String) -> Color {
@@ -91,24 +91,36 @@ struct WorkoutDetailScreen: View {
                     Label(exercise.name, systemImage: "target")
                 }
             }//: #endOf Section
-            
-            Section {
-                NavigationLink(
-                    destination:  TimerView()
-                ){
-                    Label("Begin Workout", systemImage: "timer")
-                        .font(.headline)
-                        .foregroundColor(.primary)
-                        .cornerRadius(10)
+            Section(header: Text("History")) {
+                if workout.history.isEmpty {
+                    Label("No workouts completed yet", systemImage: "calendar.badge.exclamationmark")
                 }
-                .cornerRadius(10)
-                .padding()
-            }//: #endOf Section
+                ForEach(workout.history) { history in
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text(history.date, style: .date)
+                    }
+                }
+            }
+        
+        Section {
+            NavigationLink(
+                destination:  WorkoutSessionView(workout: $workout)
+            ){
+                Label("Begin Workout", systemImage: "timer")
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                    .cornerRadius(10)
+            }
             .cornerRadius(10)
-            .foregroundColor(.primary)
+            .padding()
+        }//: #endOf Section
+        .cornerRadius(10)
+        .foregroundColor(.primary)
         //    .background()
-            
-        }//#endOfList
+    }
+    
+//#endOfList
         .navigationTitle(workout.title)
                 .toolbar {
                     Button("Edit") {
@@ -127,8 +139,9 @@ struct WorkoutDetailScreen: View {
                                                    }
                                                    ToolbarItem(placement: .confirmationAction) {
                                                        Button("Save") {
+                                                           let newWorkout = DailyWorkout(data: newWorkoutData)
                                                            isPresentingWorkoutEditScreen = false
-                                                           workout.update(from: $data)
+                                                           newWorkoutData = DailyWorkout.Data()
                                                        }
                                                    }
                                                }

@@ -76,7 +76,7 @@ var body: some View {
             RoundedRectangle(cornerSize: .zero).stroke(self.colorize(type: data.type ), lineWidth: 3.0))
         Section("Time Goal") {
             HStack {
-                Slider(value: $data.timeGoal, in:1...180, step: 1){
+                Slider(value: $data.timeGoal, in:1...240, step: 1){
                     Text("\(Int(data.timeGoal)) minutes.")
                     
                 }

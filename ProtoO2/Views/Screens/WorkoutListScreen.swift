@@ -7,12 +7,16 @@
 
 import SwiftUI
 
-import SwiftUI
 
 struct WorkoutListScreen: View {
     //PROPERTIES
     @Binding var workouts: [DailyWorkout]
     @State var isPresented: Bool = false
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var newWorkoutData = DailyWorkout.Data()
+    @State private var isPresentingNewWorkoutView = false
+    
+    let saveAction: ()->Void
     
     ///Theme rendered by workout type to color
     func colorize(type: String) -> Color {
@@ -46,6 +50,7 @@ struct WorkoutListScreen: View {
                     
                 }
                 .padding(.all)
+                .listRowBackground(self.colorize(type: workout.type ))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10).stroke(self.colorize(type: workout.type ), lineWidth: 10.0)).opacity(5.0)
             }
@@ -58,35 +63,39 @@ struct WorkoutListScreen: View {
                 Image(systemName: "plus")
             }
             .accessibilityLabel("New Workout")
-            .sheet(isPresented: $isPresented) {
-                
+            .sheet(isPresented: $isPresentingNewWorkoutView) {
                 
                 NavigationView {
-                    WorkoutEditScreen()
-                        .navigationBarItems(leading: Button("Dismiss") {
-                            isPresented = false
-                        }, trailing: Button("Add") {
-                            let newWorkout = DailyWorkout(
-                               title: newWorkoutData.title,
-                               exercises: newWorkoutData.exercises,
-                              lengthInMinutes: Int(newWorkoutData.timeGoal),
-                               color: newWorkoutData.color
-                            )
-                            workouts.append(newWorkout)
-                            isPresented = false
-                        })
+                    WorkoutEditScreen(data: $newWorkoutData)
+                        .toolbar {
+                            ToolbarItem(placement: .cancellationAction) {
+                                Button("Dismiss") {
+                                    isPresentingNewWorkoutView = false
+                                    newWorkoutData = DailyWorkout.Data()
+                                }
+                            }
+                            ToolbarItem(placement: .confirmationAction) {
+                                Button("Add") {
+                                    let newWorkout = DailyWorkout(data: newWorkoutData)
+                                    workouts.append(newWorkout)
+                                    isPresentingNewWorkoutView = false
+                                    newWorkoutData = DailyWorkout.Data()
+                                }
+                            }
+                        }
                 }
             }
-            
+            .onChange(of: scenePhase) { phase in
+                if phase == .inactive { saveAction() }
+            }
         }
+        
     }
 }
-
-
 struct WorkoutListScreen_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            WorkoutListScreen(workouts: DailyWorkout.sampleData[DailyWorkout])
+            WorkoutListScreen(workouts: .constant(DailyWorkout.sampleData), saveAction: {})
         }
     }
 }
